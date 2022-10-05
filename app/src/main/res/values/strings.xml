@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IntroSliderAppExample</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set_name">Set Name</string>
+    <string name="your_name">Your name</string>
+    <string name="text_previous">Previous</string>
+    <string name="text_next">Next</string>
+</resources>
