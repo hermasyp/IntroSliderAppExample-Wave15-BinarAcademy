@@ -34,4 +34,8 @@ class ViewPagerAdapter( fragmentManager: FragmentManager, lifecycle: Lifecycle) 
     fun getPageTitle(position : Int) : String {
         return fragmentTitleList[position]
     }
+
+    fun getMaxIndex(): Int {
+        return itemCount - 1
+    }
 }
