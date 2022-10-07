@@ -2,17 +2,23 @@ package com.catnip.introsliderappexample.ui.main
 
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
+import androidx.fragment.app.DialogFragment
 import androidx.viewpager2.widget.ViewPager2
+import com.catnip.introsliderappexample.R
 import com.catnip.introsliderappexample.databinding.ActivityMainBinding
 import com.catnip.introsliderappexample.model.SliderData
+import com.catnip.introsliderappexample.ui.customdialog.CustomMenuDialog
+import com.catnip.introsliderappexample.ui.customdialog.OnMenuSelectedListener
 import com.catnip.introsliderappexample.ui.form.FormFragment
 import com.catnip.introsliderappexample.ui.form.OnNameSubmittedListener
 import com.catnip.introsliderappexample.ui.slider.SliderFragment
 import com.catnip.introsliderappexample.utils.ViewPagerAdapter
 import com.catnip.introsliderappexample.utils.getNextIndex
 import com.catnip.introsliderappexample.utils.getPreviousIndex
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), OnNameSubmittedListener {
     private val binding: ActivityMainBinding by lazy {
@@ -128,5 +134,26 @@ class MainActivity : AppCompatActivity(), OnNameSubmittedListener {
 
     override fun onNameSubmitted(name: String) {
         Log.d(MainActivity::class.java.simpleName, "onNameSubmitted: $name")
+/*        AlertDialog.Builder(this@MainActivity)
+            .setMessage(getString(R.string.text_message_dialog))
+            .setPositiveButton(getString(R.string.text_positive_button_dialog)) { dialog, id ->
+                Snackbar.make(binding.root, getString(R.string.text_snackbar_positive), Snackbar.LENGTH_SHORT).show()
+            }
+            .setNegativeButton(getString(R.string.text_button_negative_dialog)) { dialog, id ->
+                Snackbar.make(binding.root, getString(R.string.text_snackbar_negative), Snackbar.LENGTH_SHORT).show()
+            }.create().show()*/
+
+        CustomMenuDialog().apply {
+            setOnMenuSelectedListener(object  : OnMenuSelectedListener{
+                override fun onVsPlayerClicked(dialog: DialogFragment) {
+                    dialog.dismiss()
+                    Snackbar.make(binding.root, getString(R.string.text_snackbar_positive), Snackbar.LENGTH_SHORT).show()
+                }
+
+                override fun onVsComputerClicked(dialog: DialogFragment) {
+                    Snackbar.make(binding.root, getString(R.string.text_snackbar_negative), Snackbar.LENGTH_SHORT).show()
+                }
+            })
+        }.show(supportFragmentManager,null)
     }
 }

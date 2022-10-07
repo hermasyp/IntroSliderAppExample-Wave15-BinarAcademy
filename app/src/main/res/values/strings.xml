@@ -7,4 +7,10 @@
     <string name="text_previous">Previous</string>
     <string name="text_next">Next</string>
     <string name="text_splashscreen">Ini Splashscreen</string>
+    <string name="text_message_dialog">Choose Game Mode</string>
+    <string name="text_positive_button_dialog">VS Player</string>
+    <string name="text_button_negative_dialog">VS Computer</string>
+    <string name="text_snackbar_positive">Versus Player Mode : ON</string>
+    <string name="text_snackbar_negative">Versus Computer Mode : ON</string>
+    <string name="choose_game_mode">Choose Game Mode</string>
 </resources>
